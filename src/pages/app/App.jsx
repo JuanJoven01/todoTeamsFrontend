@@ -8,6 +8,8 @@ import Tasks from '../tasks'
 import Teams from '../teams'
 import NotFound from '../notFound'
 
+import NavBar from '../../components/navBar'
+
 import '../../app.css'
 
 const AppRoutes = () => {
@@ -33,6 +35,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <NavBar/>
         <AppRoutes/>
       </BrowserRouter>
     </>
