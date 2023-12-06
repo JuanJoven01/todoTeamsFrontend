@@ -7,7 +7,7 @@
     top: 0;
     height: 50px;
     font-size: var(--default-text-size);
-    border-bottom: #000 1px solid;
+    border-bottom: var(--dark_gray) 1px solid;
 
 }
 

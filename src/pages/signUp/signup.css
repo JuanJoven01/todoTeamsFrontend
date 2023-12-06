@@ -1,0 +1,10 @@
+@import '../../index.css';
+
+.signup__title{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: var(--morado);
+}

@@ -9,6 +9,7 @@ import Teams from '../teams'
 import NotFound from '../notFound'
 
 import NavBar from '../../components/navBar'
+import Footer from '../../components/footer'
 
 import '../../app.css'
 import './app.css'
@@ -38,6 +39,7 @@ function App() {
       <BrowserRouter>
         <NavBar/>
         <AppRoutes/>
+        <Footer/>
       </BrowserRouter>
     </>
     

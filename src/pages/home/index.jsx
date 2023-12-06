@@ -3,6 +3,8 @@
 import '../../app.css'
 import './home.css'
 
+import PurpleButton from '../../components/button'
+
 function Home() {
 
   return (
@@ -15,15 +17,21 @@ function Home() {
         This is a simple to-do list app that allows you to create teams and add tasks to them.
       </p>
       <p className='home__subtitle'>
-        But if you want to work alone, you can do it too and create and track your own tasks.
+        But if you want to work alone, you can do it too, create and track your own tasks!.
       </p>
       <p className='home__subtitle'>
-        To get started, if you are not logged in, you need to register or log in.
+        To get started, if you want log in or sign up, you can do it below.
       </p>
 
-     
 
+      <div className='home__buttons'>
+        <PurpleButton href='#' text='Log in'/>
+        <p>or</p>
+        <PurpleButton href='#' text='Sign up' />
+      </div>
 
+      
+      
     </div>
   )
 }
