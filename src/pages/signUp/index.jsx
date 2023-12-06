@@ -1,14 +1,14 @@
 import '../../app.css'
 
-function SignIn() {
+function SignUp() {
 
   return (
     <>
       <div className='bg-cyan-300 h-60' > 
-      SignIn
+      Sign Up
       </div>
     </>
   )
 }
 
-export default SignIn
+export default SignUp
