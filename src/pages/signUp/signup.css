@@ -1,5 +1,12 @@
 @import '../../index.css';
 
+.signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .signup__title{
     font-size: 2.5rem;
     font-weight: 700;
@@ -7,4 +14,34 @@
     text-align: center;
     color: #fff;
     background-color: var(--morado);
+}
+
+.signup__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 50px;
+    width: 70%;
+}
+
+.signup__form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+}
+
+.form__button {
+    margin: 10px;
+}
+
+.signup__link {
+    text-decoration: underline;
+    font-weight: 500;
+    margin: 0 auto;
+}
+
+.signup__link:active {
+    color: var(--morado);
 }

@@ -1,3 +1,5 @@
+import { Link} from 'react-router-dom'
+
 import PurpleButton from '../../components/button'
 
 import './signup.css'
@@ -13,18 +15,33 @@ function SignUp() {
       <form className='signup__form'>
 
         <input 
-          type="text" 
-          placeholder='Name'
+          type="name" 
+          placeholder='Nickname / Alias'
           name='name' />
 
+        <input 
+          type="email" 
+          placeholder='Email'
+          name='mail' />
 
-        <input type="text" placeholder='Last Name' />
-        <input type="text" placeholder='Email' />
-        <input type="text" placeholder='Password' />
-        <input type="text" placeholder='Confirm Password' />
-        <PurpleButton href='#' text='Sign Up' />
+        <input 
+          type="password" 
+          placeholder='Password'
+          name='password' />
+
+        <input 
+          type="password" 
+          placeholder='Confirm Password'
+          name='confirm_password' />
+        
+        <div className='form__button'>
+          <PurpleButton  href='#' text='Sign Up' />
+        </div>
+        
+
       </form>
 
+      <Link to='/login' className='signup__link' >Have you got a user? Log in</Link>
 
     </div>
   )
