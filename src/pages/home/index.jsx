@@ -1,5 +1,4 @@
 
-
 import '../../app.css'
 import './home.css'
 
@@ -25,9 +24,10 @@ function Home() {
 
 
       <div className='home__buttons'>
-        <PurpleButton href='#' text='Log in'/>
+        
+        <PurpleButton href='/login' text='Log in'/>
         <p>or</p>
-        <PurpleButton href='#' text='Sign up' />
+        <PurpleButton href='/signup' text='Sign up' />
       </div>
 
       
