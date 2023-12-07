@@ -11,14 +11,14 @@ const links = [
     {path: '/signup', text: 'Sign up'},
 ]
 
-const SideMenu = () => {  
+const SideMenu = (props) => {  
 
     return (
         <div className="side-menu">
             <ul className="side-menu__list">
                 {links.map(({path, text}) => (
                     <li key={path} className="side-menu__li">
-                        <NavLink to={path} className="side-menu__link">
+                        <NavLink to={path} className="side-menu__link" onClick={props.toClose} >
                             {text}
                         </NavLink>
                     </li>

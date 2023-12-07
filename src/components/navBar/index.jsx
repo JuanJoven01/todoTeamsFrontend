@@ -49,7 +49,7 @@ const  NavBar = () => {
                 onClick={()=>setShowMenu(!showMenu)}
                 />
 
-                {showMenu && createPortal(<SideMenu/>, document.body)}
+                {showMenu && createPortal(<SideMenu toClose={()=>setShowMenu(false)} />, document.body)}
                 
             </nav>
 
