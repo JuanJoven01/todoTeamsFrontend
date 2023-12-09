@@ -6,6 +6,7 @@ import axios from 'axios'
 
 import PurpleButton from '../../components/button'
 import ErrorDialog from '../../components/errorDialog'
+import SuccessfulDialog from '../../components/successfulDialog'
 import Loading from '../../components/loading'
 
 import './signup.css'
@@ -14,7 +15,7 @@ function SignUp() {
 
   const [error, setError] = useState([false])
   const [loading, setLoading] = useState(false)
-
+  const [successful, setSuccessful] = useState([false])
   const handleSubmit = () => {
     // create a const to save the data of the form
     const bodyRequest = {
@@ -43,15 +44,18 @@ function SignUp() {
       delete bodyRequest.confirm_password
       setLoading(true)
       // this function is to create the user across the post method
+      
+
       const  createUser = async () => {
         try {
-          const res = await axios.post('https://todo-teams-backend.onrender.com/new-user', bodyRequest, {headers})
+          const backendUrl = 'https://todo-teams-backend.onrender.com'
+          const res = await axios.post(backendUrl+'/new-user', bodyRequest, {headers})
           if (res.data.error) {
             setError([true, 'Error', res.data.error])
             setLoading(false)
           }
           else{
-            setError([true, 'Success', 'User created successfully'])
+            setSuccessful([true, 'Success', 'User created successfully'])
             let data = res.data;
             data = JSON.stringify(data)
             console.log(data)
@@ -81,6 +85,15 @@ function SignUp() {
           title={error[1]}
           message={error[2]}
           onClose={() => setError([false])}
+        />,
+        document.body
+      )}
+
+      {successful[0] && createPortal(
+        <SuccessfulDialog 
+          title={successful[1]}
+          message={successful[2]}
+          onClose={() => setSuccessful([false])}
         />,
         document.body
       )}

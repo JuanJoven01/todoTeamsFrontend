@@ -1,0 +1,55 @@
+@import '../../index.css';
+
+
+.activate-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.activate-user__title{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: var(--morado);
+}
+
+.activate-user__subtitle{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+.activate-user__button {
+    background-color: var(--morado);
+}
+
+.activate-user__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 50px;
+    width: 70%;
+}
+
+.activate-user__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+}
+
+.activate-user__link {
+    text-decoration: underline;
+    font-weight: 500;
+    margin: 0 auto;
+}
+
+.activate-user__link:active {
+    color: var(--morado);
+}
