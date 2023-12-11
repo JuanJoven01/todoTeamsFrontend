@@ -35,7 +35,7 @@ const RecoveryPassword = () => {
             'Content-Type': 'application/json',
             'api-key': 'EstoEsSoloUnaPrueba',
             'Accept': '*/*',
-            'link': 'teams.juanjoven.com'
+            'link': 'teams.juanjoven.com/'
           }
         })
       setLoading(false)
@@ -60,7 +60,7 @@ const RecoveryPassword = () => {
   return (
     <div className='recovery'>
       <h1 className='recovery__title'>
-       Please insert your credentials
+       Please insert Email to send you a recovery link
       </h1>
 
       {error[0] && createPortal(

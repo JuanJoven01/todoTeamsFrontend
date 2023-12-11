@@ -9,6 +9,7 @@ import Teams from '../teams'
 import NotFound from '../notFound'
 import ActivateUser from '../activateUser'
 import ActivationCode from '../activationCode'
+import ChangePassword from '../changePassword'
 
 import NavBar from '../../components/navBar'
 import Footer from '../../components/footer'
@@ -23,6 +24,7 @@ const AppRoutes = () => {
         {path: '/', element: <Home/>},
         {path: '/login', element: <LogIn/>},
         {path: '/recovery-password', element: <RecoveryPassword/>},
+        {path: '/recovery-password/change-pass', element: <ChangePassword/>},
         {path: '/signup', element: <SignUp/>},
         {path: '/tasks', element: <Tasks/>},
         {path: '/teams', element: <Teams/>},
