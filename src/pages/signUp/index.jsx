@@ -1,5 +1,5 @@
-import { Link} from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useNavigate} from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import axios from 'axios'
@@ -12,6 +12,18 @@ import Loading from '../../components/loading'
 import './signup.css'
 
 function SignUp() {
+
+  // check if the user is logged in
+
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    if (localStorage.getItem('token_todo_teams')){
+      navigate('/current-logged')
+    }
+  }, [navigate])
+
+  // create the states to manage the error and successful dialogs
 
   const [error, setError] = useState([false])
   const [loading, setLoading] = useState(false)

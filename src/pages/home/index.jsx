@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import '../../app.css'
 import './home.css'
@@ -5,6 +8,14 @@ import './home.css'
 import PurpleButton from '../../components/button'
 
 function Home() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token_todo_teams')) {
+      navigate('/tasks')
+    }
+  },[navigate])
 
   return (
     <div className='home'>

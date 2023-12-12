@@ -1,5 +1,5 @@
-import { Link, redirect} from 'react-router-dom'
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useNavigate} from 'react-router-dom'
 import { createPortal } from 'react-dom'
 
 import axios from 'axios'
@@ -12,6 +12,27 @@ import Loading from '../../components/loading'
 import './login.css'
 
 const LogIn = () => {
+
+  // check if the user is logged ii
+  const [loggedIn, setLoggedIn] = useState('not logged in')
+
+  useEffect(() => {
+
+    if (localStorage.getItem('token_todo_teams')){
+      setLoggedIn('logged in')
+    }
+  }, [])
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    if (loggedIn == 'logged in'){
+      navigate('/current-logged')
+    }else if (loggedIn == 'just logged in'){
+      navigate('/tasks')
+    }
+    
+  }, [navigate, loggedIn])
+  
 
   const [error, setError] = useState([false])
   const [loading, setLoading] = useState(false)
@@ -46,6 +67,7 @@ const LogIn = () => {
       } else {
         setSuccessful([true, 'Successful', 'Welcome ' + response.data.user.name + ' you are logged in'])
         localStorage.setItem('token_todo_teams', response.data.token)
+        setLoggedIn('just logged in')
         
         
         // pending to add the redirect to the tasks page

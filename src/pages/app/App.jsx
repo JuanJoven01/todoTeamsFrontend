@@ -10,6 +10,7 @@ import NotFound from '../notFound'
 import ActivateUser from '../activateUser'
 import ActivationCode from '../activationCode'
 import ChangePassword from '../changePassword'
+import CurrentLogged from '../currentLogin'
 
 import NavBar from '../../components/navBar'
 import Footer from '../../components/footer'
@@ -31,6 +32,8 @@ const AppRoutes = () => {
         {path: '*', element: <NotFound/>},
         {path: '/activate-user', element: <ActivateUser/>},
         {path: '/activation-code', element: <ActivationCode/>},
+        {path: '/current-logged', element: <CurrentLogged/>}
+
       ]
   )
 
