@@ -1,0 +1,49 @@
+
+@import '../../index.css';
+
+.task-card__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--rear_morado);
+    margin: 5px 0px;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.task-card__header {
+    width: 100%;
+    display: flex;
+
+}
+
+
+.task-card__title{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.task-card--both{
+    display: flex;
+    align-items: center;
+}
+
+.task-card__icon--both{
+    margin: 0px 5px;
+    height: 20px;
+    width: 20px;
+}
+
+.task-card__title--decoration{
+    text-decoration: line-through;
+}
+
+.task-card__description{
+    margin: 3px 0px;
+    width: 100%;
+}
+
+.task-card__dates{
+    width: 100%;
+}

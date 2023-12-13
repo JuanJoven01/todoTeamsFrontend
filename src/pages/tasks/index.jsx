@@ -9,6 +9,8 @@ import ErrorDialog from '../../components/errorDialog'
 import SuccessfulDialog from '../../components/successfulDialog'
 import Loading from '../../components/loading'
 
+import TaskCard from '../../components/taskCard'
+
 import './tasks.css'
 
 const Tasks = () => {
@@ -50,7 +52,7 @@ const Tasks = () => {
   }
 
   useEffect(() => {
-    getMyTasks(ownTasks)
+    getMyTasks()
   },[])
  
   // This is the view of the component
@@ -66,25 +68,21 @@ const Tasks = () => {
       </p>
 
       <div className='own_tasks' >
-        {ownTasks.map((task, index) => (
-          <div className='own_tasks__container' key={index}>
-            <p className='own_tasks__task__title'>
-              {task.title}
-            </p>
-            <p className='own_tasks__task__description'>
-              {task.description}
-            </p>
-            <p className='own_tasks__task__status'>
-              {task.status}
-            </p>
-            <p className='own_tasks__task__assigned'>
-              {task.assigned}
-            </p>
-            <p className='own_tasks__task__deadline'>
-              {task.deadline}
-            </p>
-          </div>
+        {ownTasks.map((task) => (
+           <TaskCard 
+            key={task.id} 
+            task={task}
+            error={error}
+            setError={setError}
+            loading={loading}
+            setLoading={setLoading}
+            successful={successful}
+            setSuccessful={setSuccessful}
+            getMyTasks={getMyTasks}
+            
+            />
         ))}
+
       </div>
 
       {error[0] && createPortal(
@@ -104,8 +102,6 @@ const Tasks = () => {
         />,
         document.body
       )}
-
-      
 
       {loading && createPortal( <Loading />, document.body) }
 
