@@ -11,6 +11,7 @@ import Loading from '../../components/loading'
 
 import TaskCard from '../../components/taskCard'
 import UpdateTasks from "../../components/updateTasks";
+import DeleteTasks from '../../components/deleteTasks'
 
 import './tasks.css'
 
@@ -52,13 +53,17 @@ const Tasks = () => {
     }
   }
 
+  const [updateTask, setUpdateTask] = useState([false,null])
+
+  const [deleteTask, setDeleteTask] = useState([false,null,null])
+
   useEffect(() => {
     getMyTasks()
-  },[])
+  },[updateTask])
  
   // this code is for the update task component
 
-  const [updateTask, setUpdateTask] = useState([true,1])
+  
 
 
   // This is the view of the component
@@ -87,6 +92,8 @@ const Tasks = () => {
             getMyTasks={getMyTasks}
             updateTask={updateTask}
             setUpdateTask={setUpdateTask}
+            deleteTask={deleteTask}
+            setDeleteTask={setDeleteTask}
             />
         ))}
 
@@ -123,6 +130,24 @@ const Tasks = () => {
           successful={successful}
           setSuccessful={setSuccessful}
           updateTask={updateTask}
+          setUpdateTask={setUpdateTask}
+        />,
+        document.body
+      )}
+
+      {deleteTask[0] && createPortal(
+        <DeleteTasks 
+          taskName={deleteTask[2]}
+          taskId={deleteTask[1]}
+
+          error={error}
+          setError={setError}
+          loading={loading}
+          setLoading={setLoading}
+          successful={successful}
+          setSuccessful={setSuccessful}
+          deleteTask={deleteTask}
+          setDeleteTask={setDeleteTask}
           setUpdateTask={setUpdateTask}
         />,
         document.body

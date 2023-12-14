@@ -105,11 +105,11 @@ const TaskCard = (props) => {
             </div>
 
             <div className="task-card__buttons">
-                <div className="purple-button both-button">
+                <div className="purple-button both-button" onClick={()=> props.setUpdateTask([true,props.task.id])}>
                     <PurpleButton text='Update' />
                 </div>
 
-                <div className="red-button both-button">
+                <div className="red-button both-button" onClick={()=> props.setDeleteTask([true,props.task.id,props.task.title])} >
                     <RedButton text='Delete' />
                 </div>
 
