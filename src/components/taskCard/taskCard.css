@@ -47,3 +47,15 @@
 .task-card__dates{
     width: 100%;
 }
+
+.task-card__buttons {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.both-button{
+    margin: 0px 5px;
+
+}
+

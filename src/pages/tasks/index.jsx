@@ -10,6 +10,7 @@ import SuccessfulDialog from '../../components/successfulDialog'
 import Loading from '../../components/loading'
 
 import TaskCard from '../../components/taskCard'
+import UpdateTasks from "../../components/updateTasks";
 
 import './tasks.css'
 
@@ -55,6 +56,11 @@ const Tasks = () => {
     getMyTasks()
   },[])
  
+  // this code is for the update task component
+
+  const [updateTask, setUpdateTask] = useState([true,1])
+
+
   // This is the view of the component
   return (
 
@@ -79,7 +85,8 @@ const Tasks = () => {
             successful={successful}
             setSuccessful={setSuccessful}
             getMyTasks={getMyTasks}
-            
+            updateTask={updateTask}
+            setUpdateTask={setUpdateTask}
             />
         ))}
 
@@ -104,6 +111,22 @@ const Tasks = () => {
       )}
 
       {loading && createPortal( <Loading />, document.body) }
+
+      {updateTask[0] && createPortal(
+        <UpdateTasks 
+          taskId={updateTask[1]}
+
+          error={error}
+          setError={setError}
+          loading={loading}
+          setLoading={setLoading}
+          successful={successful}
+          setSuccessful={setSuccessful}
+          updateTask={updateTask}
+          setUpdateTask={setUpdateTask}
+        />,
+        document.body
+      )}
 
     </div>
   )

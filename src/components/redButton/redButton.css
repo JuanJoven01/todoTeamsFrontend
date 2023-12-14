@@ -1,0 +1,5 @@
+@import '../../index.css';
+
+.red__button{
+    background-color: var(--red);
+}

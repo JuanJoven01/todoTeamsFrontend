@@ -1,8 +1,9 @@
-
-
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 
+
 import PurpleButton from "../button";
+import RedButton from "../redButton";
+
 
 import axios from 'axios'
 
@@ -28,7 +29,9 @@ const TaskCard = (props) => {
         }
     }
 
-    // a function to change the status of the task when click on done or title
+    //this function call the component to update the task
+
+    
 
     const changeStatus = async () => {
 
@@ -101,7 +104,22 @@ const TaskCard = (props) => {
                 
             </div>
 
+            <div className="task-card__buttons">
+                <div className="purple-button both-button">
+                    <PurpleButton text='Update' />
+                </div>
+
+                <div className="red-button both-button">
+                    <RedButton text='Delete' />
+                </div>
+
+            </div>
+
+            
+
         </div>
+
+        
 
 
     )
