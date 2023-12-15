@@ -1,4 +1,4 @@
-import { Link, redirect, useParams} from 'react-router-dom'
+import { Link, redirect, useNavigate} from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -12,10 +12,19 @@ import Loading from '../../components/loading'
 import TaskCard from '../../components/taskCard'
 import UpdateTasks from "../../components/updateTasks";
 import DeleteTasks from '../../components/deleteTasks'
+import NewSingleTask from '../../components/newSingleTask'
 
 import './tasks.css'
 
 const Tasks = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem('token_todo_teams')) {
+      navigate('/')
+    }
+  },[navigate])
 
   const [error, setError] = useState([false])
   const [loading, setLoading] = useState(false)
@@ -57,6 +66,8 @@ const Tasks = () => {
 
   const [deleteTask, setDeleteTask] = useState([false,null,null])
 
+  const [newSingleTask, setNewSingleTask] = useState(false)
+
   useEffect(() => {
     getMyTasks()
   },[updateTask])
@@ -97,7 +108,17 @@ const Tasks = () => {
             />
         ))}
 
+        <div className='own_tasks__button' onClick={()=>setNewSingleTask(true)} >
+          <PurpleButton text='New Single Task' />
+        </div>
+
       </div>
+
+      <p className='tasks__subtitle'>
+        Your shared tasks:
+      </p>
+
+      {/* Bellow are the portals calls */}
 
       {error[0] && createPortal(
         <ErrorDialog 
@@ -149,6 +170,23 @@ const Tasks = () => {
           deleteTask={deleteTask}
           setDeleteTask={setDeleteTask}
           setUpdateTask={setUpdateTask}
+        />,
+        document.body
+      )}
+
+      {newSingleTask && createPortal(
+        <NewSingleTask 
+
+          error={error}
+          setError={setError}
+          loading={loading}
+          setLoading={setLoading}
+          successful={successful}
+          setSuccessful={setSuccessful}
+          newSingleTask={newSingleTask}
+          setNewSingleTask={setNewSingleTask}
+          setUpdateTask={setUpdateTask}
+
         />,
         document.body
       )}

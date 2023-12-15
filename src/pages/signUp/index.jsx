@@ -31,7 +31,7 @@ function SignUp() {
   const handleSubmit = () => {
     // create a const to save the data of the form
     const bodyRequest = {
-      'name': document.querySelector('input[name="name"]').value,
+      'name': document.querySelector('input[name="name"]').value.toLowerCase(),
       'mail': document.querySelector('input[name="mail"]').value,
       'password': document.querySelector('input[name="password"]').value,
       'confirm_password': document.querySelector('input[name="confirm_password"]').value,

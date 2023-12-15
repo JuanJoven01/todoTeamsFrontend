@@ -1,0 +1,45 @@
+@import '../../index.css';
+
+.new-team{
+    display: flex;
+    position: fixed;
+    top: 100px;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    background-color: white;
+    border: 1px solid var(--dark_gray);
+    box-shadow: 0px 0px 10px 0px var(--dark_gray);
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-team__form {       
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 50px;
+    width: 90%;
+}
+
+.new-team__form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--dark_gray);
+    border-radius: 5px;
+}
+
+.form__buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.both-buttons {
+    margin: 5px 10px;
+}
+

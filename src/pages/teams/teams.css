@@ -1,0 +1,45 @@
+@import '../../index.css';
+
+.teams{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.teams__title{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: var(--morado);
+}
+
+.teams__subtitle{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.my_teams{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 10px;
+    width: 80%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+}
+
+.create-new-team {
+    margin: 5px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+

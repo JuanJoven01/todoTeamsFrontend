@@ -50,7 +50,7 @@ const LogIn = () => {
     try {
       const response = await axios.post('https://todo-teams-backend.onrender.com/login', 
         {
-          name : nameRef.current.value,
+          name : nameRef.current.value.toLowerCase(),
           password : passwordRef.current.value  
         },
         {

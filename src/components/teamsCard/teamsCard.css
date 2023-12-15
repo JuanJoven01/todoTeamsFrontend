@@ -1,0 +1,33 @@
+
+@import '../../index.css';
+
+.teams-card__container {
+    display: flex;
+    width: 100%;
+    background-color: var(--rear_morado);
+    margin: 5px 0px;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.teams-card__data{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0px 10px;
+}
+
+.teams-card__data span{
+    font-weight: 650;
+    margin: 5px 0px;
+}
+
+.teams-card__button {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+}
+
+
+
