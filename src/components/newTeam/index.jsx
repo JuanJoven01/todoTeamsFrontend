@@ -38,7 +38,7 @@ const NewTeam = (props) => {
       } else {
         props.setNewTeam(false)
         props.setSuccessful([true, 'Successful', 'The team was created'])
-        //props.getMyteams()
+        props.setMyTeams()
       }
     } catch (error) {
       props.setLoading(false)

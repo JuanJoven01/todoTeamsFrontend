@@ -60,11 +60,11 @@ const TaskCard = (props) => {
                 props.setError([true, 'Error', change.data.error])
         
             } else {
-                props.setSuccessful([true, 'Successful', 'The task was updated'])
-                
+                //props.setSuccessful([true, 'Successful', 'The task was updated'])
+                props.setLoading(false)
                 props.getMyTasks()
             }
-            props.setLoading(false)
+            
         
         
         }catch(error){

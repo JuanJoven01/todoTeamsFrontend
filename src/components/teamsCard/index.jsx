@@ -18,6 +18,13 @@ const TeamsCard = (props) => {
 
     const theTeam = getTeamData()
 
+    //this function use setTeamId to send the teamId to the parent component and opens the send invitation component
+
+    const saveUserId = () => {
+        props.setTeamId(theTeam.id)
+        props.setSendInvitation(true)
+    }
+
     console.log(props)
 
     return (
@@ -35,7 +42,7 @@ const TeamsCard = (props) => {
   
             </div>
 
-            <div className="teams-card__button" >
+            <div className="teams-card__button" onClick={()=>saveUserId()} >
                 <PurpleButton text='Invite' />
             </div>
            

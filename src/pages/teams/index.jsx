@@ -14,6 +14,7 @@ import TeamsCard from '../../components/teamsCard'
 
 
 import './teams.css'
+import SendInvitation from '../../components/sendInvitation'
 
 const Teams = () => {
 
@@ -32,6 +33,10 @@ const Teams = () => {
   const [newTeam, setNewTeam] = useState(false)
 
   const [myTeams, setMyTeams] = useState(null)
+
+  const [sendInvitation, setSendInvitation] = useState(false)
+
+  const [teamId, setTeamId] = useState(null)
 
   //this function get my teams
   
@@ -97,6 +102,9 @@ const Teams = () => {
             setLoading={setLoading}
             successful={successful}
             setSuccessful={setSuccessful}
+            setSendInvitation={setSendInvitation}
+
+            setTeamId={setTeamId}
             
             />
         ))}
@@ -138,11 +146,26 @@ const Teams = () => {
           successful={successful}
           setSuccessful={setSuccessful}
           setNewTeam={setNewTeam}
+          setMyTeams={setMyTeams}
         />,
         document.body
       )}
 
 
+      {sendInvitation && createPortal(
+        <SendInvitation 
+          error={error}
+          setError={setError}
+          loading={loading}
+          setLoading={setLoading}
+          successful={successful}
+          setSuccessful={setSuccessful}
+          setNewTeam={setNewTeam}
+          setSendInvitation={setSendInvitation}
+          teamId={teamId}
+        />,
+        document.body
+      )}
 
      
 
