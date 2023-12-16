@@ -25,7 +25,6 @@ const TeamsCard = (props) => {
         props.setSendInvitation(true)
     }
 
-    console.log(props)
 
     return (
         
@@ -45,7 +44,6 @@ const TeamsCard = (props) => {
             <div className="teams-card__button" onClick={()=>saveUserId()} >
                 <PurpleButton text='Invite' />
             </div>
-           
 
         </div>
 

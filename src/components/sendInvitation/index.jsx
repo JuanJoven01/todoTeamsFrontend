@@ -35,7 +35,7 @@ const SendInvitation = (props) => {
           }
         })
       props.setLoading(false)
-      console.log(response.data)
+      
       if (response.data.error) {
         props.setError([true, 'Error', response.data.error])
       

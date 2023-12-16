@@ -15,6 +15,7 @@ import TeamsCard from '../../components/teamsCard'
 
 import './teams.css'
 import SendInvitation from '../../components/sendInvitation'
+import InvitationsCard from '../../components/InvitationsCard'
 
 const Teams = () => {
 
@@ -38,6 +39,8 @@ const Teams = () => {
 
   const [teamId, setTeamId] = useState(null)
 
+  const [myInvitations, setMyInvitations] = useState(null)
+
   //this function get my teams
   
   const getMyTeams = async () => {
@@ -53,7 +56,6 @@ const Teams = () => {
           }
         })
       setLoading(false)
-      console.log(response.data)
       if (response.data.error) {
         setError([true, 'Error', response.data.error])
       } else {
@@ -65,11 +67,44 @@ const Teams = () => {
     }
   }
 
+  //this function get my invitations to a teams
+
+
+  const getMyInvitations = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.get('https://todo-teams-backend.onrender.com/teams/my-invitations',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': 'EstoEsSoloUnaPrueba',
+            'Accept': '*/*',
+            'Authorization': `Bearer ${localStorage.getItem('token_todo_teams')}`
+          }
+        })
+      setLoading(false)
+      if (response.data.error) {
+        setError([true, 'Error', response.data.error])
+      } else {
+        setMyInvitations(response.data)
+      }
+    } catch (error) {
+      setLoading(false)
+      setError([true, 'Error', error.message])
+    }
+  }
+
+  useEffect(() => {
+    getMyInvitations()
+    
+  },[setMyInvitations])
+
   useEffect(() => {
     getMyTeams()
   },[setMyTeams])
 
-  while (myTeams == null) {
+  while (myTeams == null  || myInvitations == null) {
+
     return (
       <div >
         {createPortal( <Loading />, document.body) }
@@ -78,6 +113,72 @@ const Teams = () => {
     )
   }
 
+  // this function evaluate if the user has pending invitations
+
+  const validatePendingInvitations = () => {
+    if (myInvitations.length > 0) {
+      return (
+        myInvitations.map((invitation) => (
+          
+          <InvitationsCard 
+           key={invitation.id} 
+           invitation={invitation}
+
+           error={error}
+           setError={setError}
+           loading={loading}
+           setLoading={setLoading}
+           successful={successful}
+           setSuccessful={setSuccessful}
+           setSendInvitation={setSendInvitation}
+
+           
+           />
+       ))
+      )
+    } else {
+      return (
+        <div className='no-pending-invitations' >
+          <p>
+            You don't have pending invitations
+          </p>
+        </div>
+      )
+    }
+  }
+
+  //this function validate if the user has teams
+  const validateUserTeams =()=>{
+    if (myTeams.length > 0) {
+      return (
+        myTeams.map((team) => (
+          <TeamsCard 
+           key={team.teamId} 
+           team={team}
+
+           error={error}
+           setError={setError}
+           loading={loading}
+           setLoading={setLoading}
+           successful={successful}
+           setSuccessful={setSuccessful}
+           setSendInvitation={setSendInvitation}
+
+           setTeamId={setTeamId}
+           
+           />
+       ))
+      )
+    } else {
+      return (
+        <div className='no-teams' >
+          <p>
+            You don't have teams
+          </p>
+        </div>
+      )
+    }
+  }
   
   return (
 
@@ -113,6 +214,13 @@ const Teams = () => {
 
       <div className='create-new-team ' onClick={()=>setNewTeam(true)} >
         <PurpleButton text='Create a New Team' />
+      </div>
+      <p className='teams__subtitle'>
+        Your Pending Invitations:
+      </p>
+      <div className='my_invitations' >
+        {validatePendingInvitations()}
+
       </div>
 
       {/* Bellow are the portals calls */}
