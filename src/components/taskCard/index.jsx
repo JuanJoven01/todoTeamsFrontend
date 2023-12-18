@@ -85,21 +85,21 @@ const TaskCard = (props) => {
             </div>
             
             <p className='task-card__description'>
-                Description: {props.task.description}
+                <span>Description:</span> {props.task.description}
             </p>
 
             <div className='task-card__dates'>
                 <p className='task-card__date'>
-                    Created: {props.task.createdAt}
+                    <span>Created:</span>     {props.task.createdAt}
                 </p>
                 <p className='task-card__date'>
-                    Updated: {props.task.updatedAt}
+                    <span>Updated:</span> {props.task.updatedAt}
                 </p>
                 <p className='task-card__date'>
-                    Deadline: {props.task.deadline}
+                    <span>Deadline:</span> {props.task.deadline}
                 </p>
                 <p className='task-card__date'>
-                    Finished: {props.task.finishedAt}
+                    <span>Finished:</span> {props.task.finishedAt}
                 </p>
                 
             </div>

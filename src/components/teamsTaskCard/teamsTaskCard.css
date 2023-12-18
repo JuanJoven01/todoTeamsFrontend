@@ -1,0 +1,39 @@
+
+@import '../../index.css';
+
+.teams-task-card__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--rear_morado);
+    margin: 5px 0px;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.teams-task-card__data{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0px 10px;
+    padding-right: 20px;
+}
+
+.teams-task-card__data--small{
+    font-size: 0.7rem;
+}
+
+.teams-task-card__data span{
+    font-weight: 650;
+    margin: 5px 0px;
+}
+
+.teams-task-card__button {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+}
+
+
+

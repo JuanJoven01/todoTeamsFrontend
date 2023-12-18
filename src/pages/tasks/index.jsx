@@ -13,8 +13,12 @@ import TaskCard from '../../components/taskCard'
 import UpdateTasks from "../../components/updateTasks";
 import DeleteTasks from '../../components/deleteTasks'
 import NewSingleTask from '../../components/newSingleTask'
+import TeamsTaskCard from '../../components/teamsTaskCard'
+import NewTeamTask from '../../components/newTeamTask'
+
 
 import './tasks.css'
+
 
 const Tasks = () => {
 
@@ -35,7 +39,6 @@ const Tasks = () => {
   const getMyTasks = async () => {
     try {
       setLoading(true)
-      console.log(`Bearer ${localStorage.getItem('token_todo_teams')}`)
       const response = await axios.get('https://todo-teams-backend.onrender.com/tasks', 
         {
           headers: {
@@ -47,7 +50,6 @@ const Tasks = () => {
         })
         
       setLoading(false)
-      console.log(response.data)
       if (response.data.error) {
         setError([true, 'Error', response.data.error])
       } else {
@@ -68,14 +70,48 @@ const Tasks = () => {
 
   const [newSingleTask, setNewSingleTask] = useState(false)
 
+  const [myTeams, setMyTeams] = useState(null)
+
+  const [newTeamTasks, setNewTeamTasks] = useState([false,null])
+
   useEffect(() => {
     getMyTasks()
   },[updateTask])
  
-  // this code is for the update task component
+  // this function helps to get the teams of the user
+  const getMyTeams = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.get('https://todo-teams-backend.onrender.com/teams/my-teams',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': 'EstoEsSoloUnaPrueba',
+            'Accept': '*/*',
+            'Authorization': `Bearer ${localStorage.getItem('token_todo_teams')}`
+          }
+        })
+      setLoading(false)
+      if (response.data.error) {
+        setError([true, 'Error', response.data.error])
+      } else {
+        setMyTeams(response.data)
+      }
+    } catch (error) {
+      setLoading(false)
+      setError([true, 'Error', error.message])
+    }
+  }
 
-  
+  useEffect(() => {
+    getMyTeams()
+  },[])
 
+  while (myTeams === null) {
+    return (
+       <Loading />
+    )
+  }
 
   // This is the view of the component
   return (
@@ -117,6 +153,33 @@ const Tasks = () => {
       <p className='tasks__subtitle'>
         Your shared tasks:
       </p>
+
+      <div className='shared_tasks' >
+          
+          {myTeams.map((team)=>(
+            <TeamsTaskCard
+            key={team.teamId} 
+            team={team}
+            error={error}
+            setError={setError}
+            loading={loading}
+            setLoading={setLoading}
+            successful={successful}
+            setSuccessful={setSuccessful}
+            getMyTasks={getMyTasks}
+            updateTask={updateTask}
+            setUpdateTask={setUpdateTask}
+            deleteTask={deleteTask}
+            setDeleteTask={setDeleteTask}
+            setNewTeamTasks={setNewTeamTasks}
+            />
+            
+          )
+
+          )}
+
+        
+      </div>
 
       {/* Bellow are the portals calls */}
 
@@ -176,7 +239,6 @@ const Tasks = () => {
 
       {newSingleTask && createPortal(
         <NewSingleTask 
-
           error={error}
           setError={setError}
           loading={loading}
@@ -186,6 +248,23 @@ const Tasks = () => {
           newSingleTask={newSingleTask}
           setNewSingleTask={setNewSingleTask}
           setUpdateTask={setUpdateTask}
+
+        />,
+        document.body
+      )}
+
+      {newTeamTasks[0] && createPortal(
+        <NewTeamTask 
+          error={error}
+          setError={setError}
+          loading={loading}
+          setLoading={setLoading}
+          successful={successful}
+          setSuccessful={setSuccessful}
+          newSingleTask={newSingleTask}
+          setNewTeamTasks={setNewTeamTasks}
+          setUpdateTask={setUpdateTask}
+          newTeamTasks={newTeamTasks}
 
         />,
         document.body
