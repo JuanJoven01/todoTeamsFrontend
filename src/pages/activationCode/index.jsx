@@ -48,13 +48,11 @@ const ActivationCode = () => {
               else{
                 setSuccessful([true, 'Success', 'Activation code sent successfully'])
                 let data = res.data;
-                console.log(data)
                 setLoading(false)        
               }
         } catch (error) {
             setError([true, 'Error', error]);
             setLoading(false);
-            console.log('error')
 
         }
         

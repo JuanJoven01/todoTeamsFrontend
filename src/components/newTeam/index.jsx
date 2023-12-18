@@ -32,13 +32,13 @@ const NewTeam = (props) => {
           }
         })
       props.setLoading(false)
-      console.log(response.data)
       if (response.data.error) {
         props.setError([true, 'Error', response.data.error])
       } else {
         props.setNewTeam(false)
         props.setSuccessful([true, 'Successful', 'The team was created'])
-        props.setMyTeams()
+        props.setUpdateTeamState(props.updateTeamState+1)
+
       }
     } catch (error) {
       props.setLoading(false)

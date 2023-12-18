@@ -11,7 +11,6 @@ import './invitationsCard.css'
 const InvitationsCard = (props) => {
 
     const invitation = props.invitation
-    console.log(invitation)
 
     // this function is to accept the invitation
     const acceptInvitation = async () => {
@@ -33,6 +32,7 @@ const InvitationsCard = (props) => {
                 props.setError([true, 'Error', response.data.error])
             } else {
                 props.setSuccessful([true, 'Successful', 'Invitation accepted'])
+                props.setUpdateInvitationState(props.updateInvitationState+1)
             }
             props.setLoading(false)
         } catch (error) {
@@ -64,6 +64,7 @@ const InvitationsCard = (props) => {
                 props.setError([true, 'Error', reject.data.error])
             }else{
                 props.setSuccessful([true, 'Successful', 'Invitation rejected'])
+                props.setUpdateInvitationState(props.updateInvitationState+1)
             }
             props.setLoading(false)
 

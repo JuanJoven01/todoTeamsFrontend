@@ -10,7 +10,6 @@ import './deleteTasks.css'
 
 const DeleteTasks = (props) => {
 
-  console.log(props)
   //this function send a delete request to delete the task
 
   const deleteTask = async (e) => {
@@ -27,13 +26,16 @@ const DeleteTasks = (props) => {
           }
         })
       props.setLoading(false)
-      console.log(response.data)
       if (response.data.error) {
         props.setError([true, 'Error', response.data.error])
       } else {
         props.setSuccessful([true, 'Successful', 'The task was deleted'])
         props.setDeleteTask([false,null,null])
         props.setUpdateTask([false,null])
+        props.setUpdateTaskState(props.updateTaskState+1)
+        props.setUpdateTeamTaskState(props.updateTeamTaskState+1)
+        
+
       }
     } catch (error) {
       props.setLoading(false)

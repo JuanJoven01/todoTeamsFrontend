@@ -34,6 +34,29 @@
     justify-content: end;
     width: 100%;
 }
+.teams-task-card__skeleton{
+    width: 100%;
+    margin: 5px 0px;
+    border-radius: 7px;
+    padding: 10px;
+    animation-name: skeleton;
+    animation-duration: 1s;
+}
+
+/* Here is the animation to teams-task-card__skeleton
+changing the color between var(--rear_morado) and white  */
+
+@keyframes skeleton {
+    0% {
+        background-color: var(--rear_morado);
+    }
+    50% {
+        background-color: white;
+    }
+    100% {
+        background-color: var(--rear_morado);
+    }
+}
 
 
 

@@ -39,7 +39,6 @@ const RecoveryPassword = () => {
           }
         })
       setLoading(false)
-      console.log(response.data)
       if (response.data.error) {
         setError([true, 'Error', response.data.error])
       } else {

@@ -60,9 +60,10 @@ const TaskCard = (props) => {
                 props.setError([true, 'Error', change.data.error])
         
             } else {
-                //props.setSuccessful([true, 'Successful', 'The task was updated'])
                 props.setLoading(false)
-                props.getMyTasks()
+                // props.getMyTasks()
+                props.setUpdateTaskState(props.updateTaskState+1)
+                props.setUpdateTeamTaskState(props.updateTeamTaskState+1)
             }
             
         
@@ -109,7 +110,9 @@ const TaskCard = (props) => {
                     <PurpleButton text='Update' />
                 </div>
 
-                <div className="red-button both-button" onClick={()=> props.setDeleteTask([true,props.task.id,props.task.title])} >
+                <div className="red-button both-button" 
+                onClick={()=> 
+                    props.setDeleteTask([true,props.task.id,props.task.title])} >
                     <RedButton text='Delete' />
                 </div>
 

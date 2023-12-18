@@ -9,11 +9,10 @@ import TaskCard from "../taskCard";
 import './teamsTaskCard.css'
 
 const TeamsTaskCard = (props) => {
-    console.log('setting')
-    console.log(props.team)
+
     const teamId = props.team.teamId
     const currentTeam = props.team.teams[0]
-    console.log(teamId)
+
 
     const [teamTasks, setTeamTasks] = useState([])
 
@@ -45,7 +44,7 @@ const TeamsTaskCard = (props) => {
 
     useEffect(() => {
         showTeamTasks()
-    },[])
+    },[props.updateTeamTaskState])
 
     //this function  show the tasks or skeleton
 
@@ -53,7 +52,7 @@ const TeamsTaskCard = (props) => {
         while (teamTasks ==null){
             return(
                 <div className="teams-task-card__skeleton" >
-                    <p>Loading</p>
+                    <p>Loading...</p>
                 </div>
 
             )
@@ -70,6 +69,10 @@ const TeamsTaskCard = (props) => {
                         setUpdateTask={props.setUpdateTask} 
                         updateTask={props.updateTask}
                         setDeleteTask={props.setDeleteTask}
+                        setUpdateTaskState={props.setUpdateTaskState}
+                        updateTaskState={props.updateTaskState}
+                        setUpdateTeamTaskState={props.setUpdateTeamTaskState}
+                        updateTeamTaskState={props.updateTeamTaskState}
                         />
                     ))}
             </div>

@@ -41,6 +41,11 @@ const Teams = () => {
 
   const [myInvitations, setMyInvitations] = useState(null)
 
+  // this state is used to render teams and invitations
+
+  const [updateTeamState, setUpdateTeamState] = useState(0)
+  const [updateInvitationState, setUpdateInvitationState] = useState(0)
+
   //this function get my teams
   
   const getMyTeams = async () => {
@@ -97,11 +102,11 @@ const Teams = () => {
   useEffect(() => {
     getMyInvitations()
     
-  },[setMyInvitations])
+  },[updateInvitationState])
 
   useEffect(() => {
     getMyTeams()
-  },[setMyTeams])
+  },[updateTeamState])
 
   while (myTeams == null  || myInvitations == null) {
 
@@ -121,16 +126,18 @@ const Teams = () => {
         myInvitations.map((invitation) => (
           
           <InvitationsCard 
-           key={invitation.id} 
-           invitation={invitation}
+            key={invitation.id} 
+            invitation={invitation}
 
-           error={error}
-           setError={setError}
-           loading={loading}
-           setLoading={setLoading}
-           successful={successful}
-           setSuccessful={setSuccessful}
-           setSendInvitation={setSendInvitation}
+            error={error}
+            setError={setError}
+            loading={loading}
+            setLoading={setLoading}
+            successful={successful}
+            setSuccessful={setSuccessful}
+            setSendInvitation={setSendInvitation}
+            updateInvitationState={updateInvitationState}
+            setUpdateInvitationState={setUpdateInvitationState}
 
            
            />
@@ -192,23 +199,7 @@ const Teams = () => {
       </p>
 
       <div className='my_teams' >
-        {myTeams.map((team) => (
-           <TeamsCard 
-            key={team.teamId} 
-            team={team}
-
-            error={error}
-            setError={setError}
-            loading={loading}
-            setLoading={setLoading}
-            successful={successful}
-            setSuccessful={setSuccessful}
-            setSendInvitation={setSendInvitation}
-
-            setTeamId={setTeamId}
-            
-            />
-        ))}
+        {validateUserTeams()}
 
       </div>
 
@@ -255,6 +246,8 @@ const Teams = () => {
           setSuccessful={setSuccessful}
           setNewTeam={setNewTeam}
           setMyTeams={setMyTeams}
+          setUpdateTeamState={setUpdateTeamState}
+          updateTeamState={updateTeamState}
         />,
         document.body
       )}

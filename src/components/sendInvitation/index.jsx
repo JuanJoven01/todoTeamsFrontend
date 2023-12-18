@@ -44,7 +44,6 @@ const SendInvitation = (props) => {
         props.setSuccessful([true, 'Successful', 'The invitation was sent'])
       }
     } catch (error) {
-      console.log(error)
       props.setLoading(false)
       props.setError([true, 'Error', error.message])
     }

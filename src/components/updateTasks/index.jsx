@@ -26,12 +26,11 @@ const UpdateTasks = (props) => {
           }
         })
       props.setLoading(false)
-      console.log(task.data)
       if (task.data.error) {
-        console.log('this error')
         props.setError([true, 'Error', task.data.error])
       } else {
         setTaskData(task.data)
+        
       }
     } catch (error) {
       props.setLoading(false)
@@ -95,6 +94,8 @@ const UpdateTasks = (props) => {
       } else {
         props.setSuccessful([true, 'Successful', 'The task was updated'])
         props.setUpdateTask([false, null])
+        props.setUpdateTaskState(props.updateTaskState+1)
+        props.setUpdateTeamTaskState(props.updateTeamTaskState+1)
       }
     } catch (error) {
       props.setLoading(false)

@@ -1,5 +1,5 @@
-import { Link, redirect, useNavigate} from 'react-router-dom'
-import { useState, useRef, useEffect } from 'react'
+import { useNavigate} from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 import axios from 'axios'
@@ -54,9 +54,6 @@ const Tasks = () => {
         setError([true, 'Error', response.data.error])
       } else {
         setOwnTasks(response.data)
-        
-        
-        // pending to add the redirect to the tasks page
       }
     } catch (error) {
       setLoading(false)
@@ -74,9 +71,14 @@ const Tasks = () => {
 
   const [newTeamTasks, setNewTeamTasks] = useState([false,null])
 
+  // that useState are used to recall functions
+  
+  const [updateTaskState, setUpdateTaskState] = useState(0)
+  const [updateTeamTaskState, setUpdateTeamTaskState] = useState(0)
+
   useEffect(() => {
     getMyTasks()
-  },[updateTask])
+  },[updateTaskState])
  
   // this function helps to get the teams of the user
   const getMyTeams = async () => {
@@ -141,6 +143,10 @@ const Tasks = () => {
             setUpdateTask={setUpdateTask}
             deleteTask={deleteTask}
             setDeleteTask={setDeleteTask}
+            setUpdateTaskState={setUpdateTaskState}
+            updateTaskState={updateTaskState}
+            setUpdateTeamTaskState={setUpdateTeamTaskState}
+            updateTeamTaskState={updateTeamTaskState}
             />
         ))}
 
@@ -172,6 +178,10 @@ const Tasks = () => {
             deleteTask={deleteTask}
             setDeleteTask={setDeleteTask}
             setNewTeamTasks={setNewTeamTasks}
+            setUpdateTaskState={setUpdateTaskState}
+            updateTaskState={updateTaskState}
+            setUpdateTeamTaskState={setUpdateTeamTaskState}
+            updateTeamTaskState={updateTeamTaskState}
             />
             
           )
@@ -215,6 +225,10 @@ const Tasks = () => {
           setSuccessful={setSuccessful}
           updateTask={updateTask}
           setUpdateTask={setUpdateTask}
+          setUpdateTaskState={setUpdateTaskState}
+          updateTaskState={updateTaskState}
+          setUpdateTeamTaskState={setUpdateTeamTaskState}
+          updateTeamTaskState={updateTeamTaskState}
         />,
         document.body
       )}
@@ -233,6 +247,10 @@ const Tasks = () => {
           deleteTask={deleteTask}
           setDeleteTask={setDeleteTask}
           setUpdateTask={setUpdateTask}
+          setUpdateTaskState={setUpdateTaskState}
+          updateTaskState={updateTaskState}
+          setUpdateTeamTaskState={setUpdateTeamTaskState}
+          updateTeamTaskState={updateTeamTaskState}
         />,
         document.body
       )}
@@ -248,6 +266,8 @@ const Tasks = () => {
           newSingleTask={newSingleTask}
           setNewSingleTask={setNewSingleTask}
           setUpdateTask={setUpdateTask}
+          setUpdateTaskState={setUpdateTaskState}
+          updateTaskState={updateTaskState}
 
         />,
         document.body
@@ -265,6 +285,9 @@ const Tasks = () => {
           setNewTeamTasks={setNewTeamTasks}
           setUpdateTask={setUpdateTask}
           newTeamTasks={newTeamTasks}
+          updateTeamTaskState={updateTeamTaskState}
+          setUpdateTeamTaskState={setUpdateTeamTaskState}
+          getMyTeams={getMyTeams}
 
         />,
         document.body

@@ -44,8 +44,7 @@ function SignUp() {
       'Accept': '*/*'
 
     }
-    console.log(bodyRequest)
-    console.log(headers)
+
     // check if the passwords match
     if (bodyRequest.password !== bodyRequest.confirm_password) {
       setError([true, 'Error', 'The passwords do not match']) && setLoading(false)
@@ -70,11 +69,9 @@ function SignUp() {
             setSuccessful([true, 'Success', 'User created successfully'])
             let data = res.data;
             data = JSON.stringify(data)
-            console.log(data)
             setLoading(false)        
           }
         } catch (error) {
-          console.log(error)
           setError([true, 'Error', 'An error occurred while creating the user'])
           setLoading(false)
         }

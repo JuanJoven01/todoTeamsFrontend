@@ -46,14 +46,13 @@ const NewTeamsTask = (props) => {
           }
         })
       props.setLoading(false)
-      console.log(response.data)
       if (response.data.error) {
         props.setError([true, 'Error', response.data.error])
       } else {
         props.setNewTeamTasks([false,null])
         props.setSuccessful([true, 'Successful', 'The task was created'])
-        
         props.setUpdateTask(false)
+        props.setUpdateTeamTaskState(props.updateTeamTaskState+1)
       }
     } catch (error) {
       props.setLoading(false)

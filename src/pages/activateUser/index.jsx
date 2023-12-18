@@ -39,7 +39,6 @@ const ActivateUser = () => {
 
         try {
             let res = await axios.post(backendUrl+'/new-user/activate-user?token='+token, null, {headers});
-            console.log(res)
             if (res.data.error) {
                 setError([true, 'Error', res.data.error])
                 setLoading(false)
@@ -48,13 +47,11 @@ const ActivateUser = () => {
                 setSuccessful([true, 'Success', 'User activated successfully'])
                 let data = res.data;
                 data = JSON.stringify(data)
-                console.log(data)
                 setLoading(false)        
               }
         } catch (error) {
             setError([true, 'Error', error]);
             setLoading(false);
-            console.log('error')
         }
     }
 
