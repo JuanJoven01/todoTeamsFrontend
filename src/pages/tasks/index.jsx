@@ -57,7 +57,7 @@ const Tasks = () => {
       }
     } catch (error) {
       setLoading(false)
-      setError([true, 'Error', error.message])
+      setError([true, 'Error', error.response.data.message])
     }
   }
 
@@ -101,7 +101,7 @@ const Tasks = () => {
       }
     } catch (error) {
       setLoading(false)
-      setError([true, 'Error', error.message])
+      setError([true, 'Error', error.response.data.message])
     }
   }
 

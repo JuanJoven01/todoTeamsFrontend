@@ -19,19 +19,9 @@ const NewTeamsTask = (props) => {
     e.preventDefault()
     props.setLoading(true)
     try {
-      let body = null
-      if (deadlineRef.current.value) {
-        body = {
-          title: titleRef.current.value,
-          description: descriptionRef.current.value,
-          deadline: deadlineRef.current.value
-        }
-      }else{
-        body = {
-          description: descriptionRef.current.value,
-          title: titleRef.current.value,
-        }
-      }
+      let body = {title: titleRef.current.value};
+      descriptionRef.current.value&& (body.description = descriptionRef.current.value);
+      deadlineRef.current.value&& (body.deadline = deadlineRef.current.value);
 
       const response = await axios.post('https://todo-teams-backend.onrender.com/tasks/create-team-tasks/'+props.newTeamTasks[1],
         
@@ -56,7 +46,7 @@ const NewTeamsTask = (props) => {
       }
     } catch (error) {
       props.setLoading(false)
-      props.setError([true, 'Error', error.message])
+      props.setError([true, 'Error', error.response.data.message])
     }
   }
 

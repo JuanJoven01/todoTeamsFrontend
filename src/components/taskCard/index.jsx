@@ -69,7 +69,7 @@ const TaskCard = (props) => {
         
         
         }catch(error){
-            props.setError([true, 'Error', error.message])
+            props.setError([true, 'Error', error.response.data.message])
             props.setLoading(false)
         }
         

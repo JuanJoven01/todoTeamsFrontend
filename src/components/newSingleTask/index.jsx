@@ -20,20 +20,9 @@ const NewSingleTask = (props) => {
     e.preventDefault()
     props.setLoading(true)
     try {
-      let body = null
-      if (deadlineRef.current.value) {
-        body = {
-          title: titleRef.current.value,
-          description: descriptionRef.current.value,
-          deadline: deadlineRef.current.value
-        }
-      }else{
-        body = {
-          description: descriptionRef.current.value,
-          title: titleRef.current.value,
-        }
-      }
-
+      let body = {title: titleRef.current.value};
+      descriptionRef.current.value&& (body.description = descriptionRef.current.value);
+      deadlineRef.current.value&& (body.deadline = deadlineRef.current.value);
       const response = await axios.post('https://todo-teams-backend.onrender.com/tasks/create-single-task',
         
         body
@@ -47,8 +36,10 @@ const NewSingleTask = (props) => {
           }
         })
       props.setLoading(false)
+      console.log(response.data)
       if (response.data.error) {
         props.setError([true, 'Error', response.data.error])
+        
       } else {
         props.setNewSingleTask(false)
         props.setSuccessful([true, 'Successful', 'The task was created'])
@@ -58,7 +49,7 @@ const NewSingleTask = (props) => {
       }
     } catch (error) {
       props.setLoading(false)
-      props.setError([true, 'Error', error.message])
+      props.setError([true, 'Error', error.response.data.message])
     }
   }
 

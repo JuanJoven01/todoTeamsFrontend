@@ -50,7 +50,7 @@ const ActivateUser = () => {
                 setLoading(false)        
               }
         } catch (error) {
-            setError([true, 'Error', error]);
+            setError([true, 'Error', error.response.data.message]);
             setLoading(false);
         }
     }

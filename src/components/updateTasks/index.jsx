@@ -34,7 +34,7 @@ const UpdateTasks = (props) => {
       }
     } catch (error) {
       props.setLoading(false)
-      props.setError([true, 'Error', error.message])
+      props.setError([true, 'Error', error.response.data.message])
     }
   }
 
@@ -61,20 +61,9 @@ const UpdateTasks = (props) => {
     e.preventDefault()
     props.setLoading(true)
 
-    let body = null
-
-    if (deadlineRef.current.value) {
-       body = {
-        "title": titleRef.current.value,
-        "description": descriptionRef.current.value,
-        "deadline": deadlineRef.current.value
-      }
-    } else {
-       body = {
-        "title": titleRef.current.value,
-        "description": descriptionRef.current.value,
-      }
-    }
+    let body = {title: titleRef.current.value};
+      descriptionRef.current.value&& (body.description = descriptionRef.current.value);
+      deadlineRef.current.value&& (body.deadline = deadlineRef.current.value);
 
     try {
       const response = await axios.put('https://todo-teams-backend.onrender.com/tasks/update-task/'+props.taskId,
@@ -99,7 +88,7 @@ const UpdateTasks = (props) => {
       }
     } catch (error) {
       props.setLoading(false)
-      props.setError([true, 'Error', error.message])
+      props.setError([true, 'Error', error.response.data.message])
     }
   }
 

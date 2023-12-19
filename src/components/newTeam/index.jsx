@@ -42,7 +42,7 @@ const NewTeam = (props) => {
       }
     } catch (error) {
       props.setLoading(false)
-      props.setError([true, 'Error', error.message])
+      props.setError([true, 'Error', error.response.data.message])
     }
   }
 

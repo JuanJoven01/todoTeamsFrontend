@@ -72,7 +72,7 @@ function SignUp() {
             setLoading(false)        
           }
         } catch (error) {
-          setError([true, 'Error', 'An error occurred while creating the user'])
+          setError([true, 'Error', error.response.data.message])
           setLoading(false)
         }
         
