@@ -20,8 +20,6 @@ const  NavBarProvider = (props) => {
         } else {
             setShowNav([
                 {path: '/', text: 'Home'},
-                {path: '/tasks', text: 'Tasks'},
-                {path: '/teams', text: 'Teams'},
                 {path: '/login', text: 'Log in'},
                 {path: '/signup', text: 'Sign up'},
 
