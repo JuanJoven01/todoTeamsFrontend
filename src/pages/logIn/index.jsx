@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import { createPortal } from 'react-dom'
 
@@ -10,6 +10,10 @@ import SuccessfulDialog from '../../components/successfulDialog'
 import Loading from '../../components/loading'
 
 import './login.css'
+
+import { NavBarContext } from "../../context/navBar.context";
+
+
 
 const LogIn = () => {
 
@@ -41,6 +45,7 @@ const LogIn = () => {
   const nameRef = useRef(null)
   const passwordRef = useRef(null)
 
+  const { setChangeNav, changeNav } = useContext(NavBarContext);
   // function to send the login Request
 
   const sendLoginRequest = async (e) => {
@@ -67,6 +72,7 @@ const LogIn = () => {
         setSuccessful([true, 'Successful', 'Welcome ' + response.data.user.name + ' you are logged in'])
         localStorage.setItem('token_todo_teams', response.data.token)
         setLoggedIn('just logged in')
+        setChangeNav(changeNav + 1)
         
         
         // pending to add the redirect to the tasks page

@@ -1,7 +1,11 @@
-// To 
-import { useState } from "react";
-import { NavLink } from "react-router-dom"
+
+import { useState, useEffect, useContext } from "react";
+import { NavLink, Link } from "react-router-dom"
 import { createPortal } from 'react-dom';
+
+import { NavBarContext } from "../../context/navBar.context";
+
+
 import SideMenu from "../sideMenu";
 
 import { CiMenuBurger } from "react-icons/ci";
@@ -9,48 +13,43 @@ import { BsMicrosoftTeams } from "react-icons/bs";
 
 import './navBar.css'   
 
-const links = [
-    {path: '/', text: 'Home'},
-    {path: '/tasks', text: 'Tasks'},
-    {path: '/teams', text: 'Teams'},
-    {path: '/login', text: 'Log in'},
-    {path: '/signup', text: 'Sign up'},
-
-]
 
 const  NavBar = () => {
+
+    const {  showNav } = useContext(NavBarContext);
+
 
     const [showMenu, setShowMenu] = useState(false);
 
     return (
-
-        
-
+            
             <nav className="navbar">
 
-                <div className="navbar__div">
-                    <BsMicrosoftTeams className="div__icon"/>
-
-                    <p className="div__title">To-Do Teams</p>
-                </div>
-               
-
-                <ul className="navbar__ul">
-                    {links.map(({path, text}) => (
-                        <li key={path} className="ul__li">
-                            <NavLink to={path} className="ul__link">
-                                {text}
-                            </NavLink>
-                        </li>
-                    ))}
-                </ul>
+                    <Link to='/' className="navbar__div">  
                     
-                <CiMenuBurger className="navbar__menu" 
-                onClick={()=>setShowMenu(!showMenu)}
-                />
+                        <BsMicrosoftTeams className="div__icon"/>
 
-                {showMenu && createPortal(<SideMenu toClose={()=>setShowMenu(false)} />, document.body)}
+                        <p className="div__title">To-Do Teams</p>
+        
+                    </Link>
+
+                    <ul className="navbar__ul">
+                        {showNav.map(({path, text}) => (
+                            <li key={path} className="ul__li">
+                                <NavLink to={path} className="ul__link">
+                                    {text}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                        
+                    <CiMenuBurger className="navbar__menu" 
+                    onClick={()=>setShowMenu(!showMenu)}
+                    />
+
+                    {showMenu && createPortal(<SideMenu toClose={()=>setShowMenu(false)} />, document.body)}
                 
+
             </nav>
 
     )

@@ -56,14 +56,14 @@
     
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 562px) {
     .navbar__menu {
         display: none;
     }
     
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 562px) {
     .navbar__ul {
         display: none;
     }

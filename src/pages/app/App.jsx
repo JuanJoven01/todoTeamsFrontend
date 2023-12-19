@@ -12,11 +12,14 @@ import ActivationCode from '../activationCode'
 import ChangePassword from '../changePassword'
 import CurrentLogged from '../currentLogin'
 
+
 import NavBar from '../../components/navBar'
 import Footer from '../../components/footer'
 
 import '../../app.css'
 import './app.css'
+
+import { NavBarProvider } from '../../context/navBar.context'
 
 const AppRoutes = () => {
 
@@ -46,12 +49,15 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar/>
-        <AppRoutes/>
-        <Footer/>
+        <NavBarProvider>
+          <NavBar/>
+        
+          <AppRoutes/>
+          <Footer/>
+        </NavBarProvider>
       </BrowserRouter>
     </>
-    
+
   )
 }
 
