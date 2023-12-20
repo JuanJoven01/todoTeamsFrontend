@@ -23,7 +23,7 @@ const SendInvitation = (props) => {
     try {
       const response = await axios.post(`https://todo-teams-backend.onrender.com/teams/invite`,
         {
-          username: usernameRef.current.value,
+          username: usernameRef.current.value.toLowerCase(),
           teamId: teamId
         },
         {
