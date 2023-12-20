@@ -5,6 +5,7 @@ import PurpleButton from "../button";
 import RedButton from "../redButton";
 
 
+
 import axios from 'axios'
 
 import './taskCard.css'
@@ -74,6 +75,19 @@ const TaskCard = (props) => {
         }
         
     }
+
+    const normalizeDate = (date) => {
+        date = new Date(date);
+        const options = { weekday:'long', year: 'numeric', month: 'long', day: '2-digit' };
+        return date.toLocaleDateString('es-ES', options);
+    }
+
+    const normalizeTime = (date) => {  
+        date = new Date(date);
+        const options = { hour: '2-digit', minute: '2-digit' };
+        return date.toLocaleTimeString('es-ES', options);
+    }
+
     return (
         
         <div className='task-card__container'>
@@ -91,16 +105,16 @@ const TaskCard = (props) => {
 
             <div className='task-card__dates'>
                 <p className='task-card__date'>
-                    <span>Created:</span>     {props.task.createdAt}
+                    <span>Created:</span> {normalizeDate(props.task.createdAt)} {normalizeTime(props.task.createdAt)} hrs
                 </p>
                 <p className='task-card__date'>
-                    <span>Updated:</span> {props.task.updatedAt}
+                    <span>Updated:</span> {normalizeDate(props.task.updatedAt)} {normalizeTime(props.task.updatedAt)} hrs
                 </p>
                 <p className='task-card__date'>
-                    <span>Deadline:</span> {props.task.deadline}
+                    <span>Deadline:</span> {normalizeDate(props.task.deadline)} {normalizeTime(props.task.deadline)} hrs
                 </p>
                 <p className='task-card__date'>
-                    <span>Finished:</span> {props.task.finishedAt}
+                    <span>Finished:</span> {props.task.finishedAt?normalizeDate(props.task.finishedAt):'Not finished yet'} {props.task.finishedAt?normalizeTime(props.task.finishedAt)+' hrs':''}
                 </p>
                 
             </div>
