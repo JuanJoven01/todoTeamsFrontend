@@ -6,7 +6,7 @@ import axios from 'axios'
 import PurpleButton from '../../components/button'
 import RedButton from '../../components/redButton'
 
-import './UpdateTasks.css'
+import './updateTasks.css'
 
 const UpdateTasks = (props) => {
 

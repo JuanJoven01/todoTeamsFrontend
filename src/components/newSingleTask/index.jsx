@@ -55,12 +55,12 @@ const NewSingleTask = (props) => {
 
   return (
 
-    <div className='update-tasks'>
+    <div className='new-single-task'>
 
-      <form className='update-tasks__form'>
+      <form className='new-single-task__form'>
         
         <label 
-        className='update-tasks__label'
+        className='new-single-task__label'
         htmlFor="title"
          >
           Title: *
@@ -73,7 +73,7 @@ const NewSingleTask = (props) => {
         />
 
         <label 
-        className='update-tasks__label'
+        className='new-single-task__label'
         htmlFor="description"
          >
           Description:
@@ -86,7 +86,7 @@ const NewSingleTask = (props) => {
         />
 
         <label 
-          className='update-tasks__label'
+          className='new-single-task__label'
           htmlFor="deadline"
          >
           Deadline:

@@ -1,6 +1,6 @@
 @import '../../index.css';
 
-.update-tasks{
+.new-single-task{
     display: flex;
     position: fixed;
     top: 100px;
@@ -16,7 +16,7 @@
     justify-content: center;
 }
 
-.update-tasks__form {       
+.new-single-task__form {       
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +24,7 @@
     width: 90%;
 }
 
-.update-tasks__form input {
+.new-single-task__form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -41,5 +41,15 @@
 
 .both-buttons {
     margin: 5px 10px;
+}
+
+@media (min-width: 650px) {
+    .new-single-task{
+        top: 200px;
+        left: 25%;
+        right: 25%;
+        width: 50%;
+        
+    }
 }
 

@@ -3,7 +3,7 @@
 .send-invitation{
     display: flex;
     position: fixed;
-    top: 100px;
+    top: 150px;
     left: 10%;
     right: 10%;
     width: 80%;
@@ -13,7 +13,6 @@
     border-radius: 10px;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .send-invitation__form {       
@@ -41,5 +40,15 @@
 
 .both-buttons {
     margin: 5px 10px;
+}
+
+@media (min-width: 650px) {
+    .send-invitation{
+        top: 200px;
+        left: 25%;
+        right: 25%;
+        width: 50%;
+        
+    }
 }
 
