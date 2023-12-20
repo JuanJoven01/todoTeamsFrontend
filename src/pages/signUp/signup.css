@@ -14,6 +14,7 @@
     text-align: center;
     color: #fff;
     background-color: var(--morado);
+    width: 100%;
 }
 
 .signup__form {
