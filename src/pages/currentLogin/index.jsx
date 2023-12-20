@@ -40,6 +40,13 @@ const CurrentLogged = () => {
        You are currently logged in,  do you want to Log Out?
       </h1>
 
+      <h2 className='current-logged__subtitle'>
+        If you want to Log Out, click the button below.
+      </h2>
+
+      <h2 className='current-logged__subtitle'>
+        Hope to see you soon!
+      </h2>
 
       <form className='current-logged__form'>
         

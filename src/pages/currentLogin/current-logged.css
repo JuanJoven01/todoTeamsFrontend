@@ -4,7 +4,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    min-height: 80vh;
 }
 
 .current-logged__title{
@@ -16,6 +17,15 @@
     background-color: var(--morado);
     width: 100%;
 }
+
+.current-logged__subtitle{
+
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
 
 .current-logged__form {
     display: flex;

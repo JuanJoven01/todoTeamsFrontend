@@ -52,7 +52,6 @@ function App() {
         <BrowserRouter>
           <NavBarProvider>
             <NavBar/>
-          
             <AppRoutes/>
             <Footer/>
           </NavBarProvider>
