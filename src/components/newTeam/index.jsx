@@ -18,6 +18,11 @@ const NewTeam = (props) => {
   const createTeam = async (e) => {
     e.preventDefault()
     props.setLoading(true)
+    if (!aliasRef.current.value) {
+      props.setLoading(false)
+      props.setError([true, 'Error', 'The alias is required'])
+      return
+    }
     try {
       const response = await axios.post('https://todo-teams-backend.onrender.com/teams/create-team',
         {
