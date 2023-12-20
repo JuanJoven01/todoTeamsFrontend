@@ -79,7 +79,6 @@ const LogIn = () => {
       }
     } catch (error) {
       setLoading(false)
-      console.log(error)
       setError([true, 'Error', 'Invalid user or password'])
     }
   }

@@ -26,7 +26,6 @@ const NewSingleTask = (props) => {
       if (deadlineRef.current.value) {
         const date = new Date(deadlineRef.current.value);
         const ans = date.toUTCString();
-        console.log(ans);
         body.deadline = ans;
         }
       
@@ -43,7 +42,6 @@ const NewSingleTask = (props) => {
           }
         })
       props.setLoading(false)
-      console.log(response.data)
       if (response.data.error) {
         props.setError([true, 'Error', response.data.error])
         

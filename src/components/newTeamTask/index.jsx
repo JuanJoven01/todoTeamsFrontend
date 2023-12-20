@@ -25,7 +25,6 @@ const NewTeamsTask = (props) => {
       if (deadlineRef.current.value) {
         const date = new Date(deadlineRef.current.value);
         const ans = date.toUTCString();
-        console.log(ans);
         body.deadline = ans;
         }
 
