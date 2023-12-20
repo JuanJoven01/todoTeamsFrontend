@@ -1,0 +1,12 @@
+.total_page{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.semi_page{
+    max-width: 900px;
+    box-shadow: 0 0 1000px 0 rgba(130, 99, 252, 0.2);
+    width: 100%;
+
+}

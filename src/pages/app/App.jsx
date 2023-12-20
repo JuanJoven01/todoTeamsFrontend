@@ -47,16 +47,19 @@ function App() {
 
 
   return (
-    <>
-      <BrowserRouter>
-        <NavBarProvider>
-          <NavBar/>
-        
-          <AppRoutes/>
-          <Footer/>
-        </NavBarProvider>
-      </BrowserRouter>
-    </>
+    <div className='total_page'>
+      <div className='semi_page' >
+        <BrowserRouter>
+          <NavBarProvider>
+            <NavBar/>
+          
+            <AppRoutes/>
+            <Footer/>
+          </NavBarProvider>
+        </BrowserRouter>
+      </div>
+      
+    </div>
 
   )
 }
