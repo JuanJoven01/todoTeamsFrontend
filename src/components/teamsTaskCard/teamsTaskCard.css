@@ -31,7 +31,6 @@
 .teams-task-card__button {
     display: flex;
     align-items: center;
-    justify-content: end;
     width: 100%;
 }
 .teams-task-card__skeleton{

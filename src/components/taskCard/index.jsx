@@ -100,7 +100,7 @@ const TaskCard = (props) => {
             </div>
             
             <p className='task-card__description'>
-                <span>Description:</span> {props.task.description}
+                <span>Description:</span> {props.task.description?props.task.description:'No description'}
             </p>
 
             <div className='task-card__dates'>

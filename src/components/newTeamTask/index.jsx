@@ -21,7 +21,13 @@ const NewTeamsTask = (props) => {
     try {
       let body = {title: titleRef.current.value};
       descriptionRef.current.value&& (body.description = descriptionRef.current.value);
-      deadlineRef.current.value&& (body.deadline = deadlineRef.current.value);
+      // this code is to get the deadline date and hour and normalize to zulu to send to the backend
+      if (deadlineRef.current.value) {
+        const date = new Date(deadlineRef.current.value);
+        const ans = date.toUTCString();
+        console.log(ans);
+        body.deadline = ans;
+        }
 
       const response = await axios.post('https://todo-teams-backend.onrender.com/tasks/create-team-tasks/'+props.newTeamTasks[1],
         

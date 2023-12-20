@@ -22,7 +22,14 @@ const NewSingleTask = (props) => {
     try {
       let body = {title: titleRef.current.value};
       descriptionRef.current.value&& (body.description = descriptionRef.current.value);
-      deadlineRef.current.value&& (body.deadline = deadlineRef.current.value);
+      // this code is to get the deadline date and hour and normalize to zulu to send to the backend
+      if (deadlineRef.current.value) {
+        const date = new Date(deadlineRef.current.value);
+        const ans = date.toUTCString();
+        console.log(ans);
+        body.deadline = ans;
+        }
+      
       const response = await axios.post('https://todo-teams-backend.onrender.com/tasks/create-single-task',
         
         body
@@ -92,12 +99,14 @@ const NewSingleTask = (props) => {
           Deadline:
         </label>
         <input 
-          type='date' 
+          type='datetime-local' 
           placeholder='Description of the task'
           name='deadline'
           ref={deadlineRef}
           defaultValue={null}
         />
+
+
 
         <div className='form__buttons' >
           <div className='purple-button both-buttons' onClick={createTask } >

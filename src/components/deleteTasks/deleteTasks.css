@@ -35,8 +35,8 @@
 .own_tasks__button{
     width: 100%;
     display: flex;
-    justify-content: end;
     margin: 5px 0px;
+    justify-content: end;
     
 }
 
