@@ -36,3 +36,23 @@
     max-width: 200px;
     align-self: center;
 }
+
+.home__end {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+.home__link {
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.home__end h2{
+    margin-bottom: 1rem;
+}
+
+.home__link:active {
+    color: var(--morado);
+}

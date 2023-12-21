@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import '../../app.css'
 import './home.css'
@@ -41,13 +41,13 @@ function Home() {
         <PurpleButton href='/signup' text='Sign up' />
       </div>
 
-      <div>
-        <p className='home__subtitle'>
-          If you want to activate your user or reset your password, you can do it below.
-        </p>
+      <div className="home__end">
+        <h2 className=''>
+          *** If you want to activate your user or reset your password, you can do it below:
+        </h2>
 
-        <Link to='/recovery-password/change-pass' className='recovery__link' >Have you got a recovery token? Click here to recovery your password</Link>
-        <Link to='/activate-user' className='login__link' >Have you got an activation code? Click here to activate your user</Link>
+        <Link to='/recovery-password/change-pass' className='home__link' >Have you got a recovery token? Click here to recovery your password</Link>
+        <Link to='/activate-user' className='home__link' >Have you got an activation code? Click here to activate your user</Link>
       
       </div>
 
