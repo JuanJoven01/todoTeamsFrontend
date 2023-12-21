@@ -32,10 +32,10 @@ const AppRoutes = () => {
         {path: '/signup', element: <SignUp/>},
         {path: '/tasks', element: <Tasks/>},
         {path: '/teams', element: <Teams/>},
-        {path: '*', element: <NotFound/>},
         {path: '/activate-user', element: <ActivateUser/>},
         {path: '/activation-code', element: <ActivationCode/>},
-        {path: '/current-logged', element: <CurrentLogged/>}
+        {path: '/current-logged', element: <CurrentLogged/>},
+        {path: '*', element: <NotFound/>},
 
       ]
   )

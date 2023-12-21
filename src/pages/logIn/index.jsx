@@ -79,7 +79,11 @@ const LogIn = () => {
       }
     } catch (error) {
       setLoading(false)
-      setError([true, 'Error', 'Invalid user or password'])
+      if (error.response.data.message){
+        setError([true, 'Error', error.response.data.message])
+      }else{
+        setError([true, 'Error', 'invalid user'])
+      }
     }
   }
     
