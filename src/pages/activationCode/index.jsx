@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 
 import PurpleButton from '../../components/button';
 
@@ -74,9 +75,14 @@ const ActivationCode = () => {
                 <div onClick={resendActivationCode} >
                     <PurpleButton className='activation-code__button' href='' text='Resend activation link/code'/>
                 </div>
+
+
+                
             </form>
 
-            
+
+            <Link to='/activate-user' className='login__link' >Have you a code? Insert it here</Link>
+
 
         </div>
 

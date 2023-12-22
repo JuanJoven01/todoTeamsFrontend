@@ -1,4 +1,4 @@
-import { Link, redirect, useParams} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -124,6 +124,8 @@ const ChangePassword = () => {
         
 
       </form>
+
+      <Link to='/recovery-password' className='login__link' >Did you need a new token? Click here</Link>
 
       {loading && createPortal( <Loading />, document.body) }
 
